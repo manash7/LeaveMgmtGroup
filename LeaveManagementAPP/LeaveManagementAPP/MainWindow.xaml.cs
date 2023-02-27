@@ -1,5 +1,9 @@
-﻿using System;
+﻿using LeaveManagementAPP.DBContext;
+using LeaveManagementAPP.ViewModels;
+using LeaveManagementAPP.Views;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +24,23 @@ namespace LeaveManagementAPP
     /// </summary>
     public partial class MainWindow : Window
     {
+        //private readonly LoginViewModel _loginViewModel;
+
         public MainWindow()
         {
             InitializeComponent();
+            
+            //DataContext = new LoginViewModel(dbContext);
         }
+
+        //private void LoginViewModel_LoginSuccessful(object sender, EventArgs e)
+        //{
+        //    // Implement the logic to navigate to the main application window
+        //    MessageBox.Show("Login successful!");
+        //}
+
+
+
     }
+    
 }

@@ -2,6 +2,7 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+<<<<<<< HEAD
     <ApplicationDefinition Update="App.xaml">
       <SubType>Designer</SubType>
     </ApplicationDefinition>
@@ -14,10 +15,17 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="ViewModel\LeavesView.xaml.cs">
+=======
+    <Compile Update="Employe_dashboard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Leave_DBoard.xaml.cs">
+>>>>>>> 1556b89bf554e9566580f26b944e753a02f39541
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -28,6 +36,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\LeavesView.xaml">
+=======
+    <Page Update="Employe_dashboard.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Leave_DBoard.xaml">
+>>>>>>> 1556b89bf554e9566580f26b944e753a02f39541
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

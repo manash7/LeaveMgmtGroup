@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "5YvA25nll2Hy0GtmhA/KYdYsbQk92X0ghg6dFCrORAVM7LVU+l6oUbay5R3p7HvMhmFWXQwHiEG9O0d7U8KGtg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Techment Technology\\source\\repos\\New folder\\LeaveManagementAPP\\LeaveManagementAPP\\LeaveManagementAPP.csproj",
+=======
+  "dgSpecHash": "ZQrJ1AijRFnKsZI1MztrbdAdlGfygzryzGnZ84Tm99zXu7hgSUiv0Qb/J0vwzk3FQDyORT0Nleqk4O7ZfSMc0g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Techment Technology\\source\\Project\\LeaveManagementAPP\\LeaveManagementAPP\\LeaveManagementAPP.csproj",
+>>>>>>> 1556b89bf554e9566580f26b944e753a02f39541
   "expectedPackageFiles": [
     "C:\\Users\\Techment Technology\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Techment Technology\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

@@ -3504,24 +3504,34 @@
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
+<<<<<<< HEAD
+=======
+      "Microsoft.EntityFrameworkCore >= 7.0.3",
+      "Microsoft.EntityFrameworkCore.Design >= 7.0.3",
+>>>>>>> 1556b89bf554e9566580f26b944e753a02f39541
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.3",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.3"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Techment Technology\\.nuget\\packages\\": {}
+    "C:\\Users\\Techment Technology\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Techment Technology\\source\\repos\\New folder\\LeaveManagementAPP\\LeaveManagementAPP\\LeaveManagementAPP.csproj",
+      "projectUniqueName": "C:\\Users\\Techment Technology\\source\\Project\\LeaveManagementAPP\\LeaveManagementAPP\\LeaveManagementAPP.csproj",
       "projectName": "LeaveManagementAPP",
-      "projectPath": "C:\\Users\\Techment Technology\\source\\repos\\New folder\\LeaveManagementAPP\\LeaveManagementAPP\\LeaveManagementAPP.csproj",
+      "projectPath": "C:\\Users\\Techment Technology\\source\\Project\\LeaveManagementAPP\\LeaveManagementAPP\\LeaveManagementAPP.csproj",
       "packagesPath": "C:\\Users\\Techment Technology\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Techment Technology\\source\\repos\\New folder\\LeaveManagementAPP\\LeaveManagementAPP\\obj\\",
+      "outputPath": "C:\\Users\\Techment Technology\\source\\Project\\LeaveManagementAPP\\LeaveManagementAPP\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
         "C:\\Users\\Techment Technology\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3547,6 +3557,19 @@
       "net6.0-windows7.0": {
         "targetAlias": "net6.0-windows",
         "dependencies": {
+<<<<<<< HEAD
+=======
+          "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[7.0.3, )"
+          },
+          "Microsoft.EntityFrameworkCore.Design": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[7.0.3, )"
+          },
+>>>>>>> 1556b89bf554e9566580f26b944e753a02f39541
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
             "version": "[7.0.3, )"
@@ -3577,7 +3600,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
       }
     }
   }

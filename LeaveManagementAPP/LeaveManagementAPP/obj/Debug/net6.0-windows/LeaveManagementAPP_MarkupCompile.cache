@@ -4,17 +4,30 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
 C:\Users\Techment Technology\source\repos\New folder\LeaveManagementAPP\LeaveManagementAPP\obj\Debug\net6.0-windows\
+=======
+C:\Users\Techment Technology\source\Project\LeaveManagementAPP\LeaveManagementAPP\obj\Debug\net6.0-windows\
+>>>>>>> 1556b89bf554e9566580f26b944e753a02f39541
 LeaveManagementAPP
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
+<<<<<<< HEAD
 C:\Users\Techment Technology\source\repos\New folder\LeaveManagementAPP\LeaveManagementAPP\App.xaml
 4-535670950
 
 251189122904
 222184377096
 MainWindow.xaml;View\CategoryView.xaml;View\EmployeeView.xaml;View\LeavesView.xaml;
+=======
+C:\Users\Techment Technology\source\Project\LeaveManagementAPP\LeaveManagementAPP\App.xaml
+32097762866
+
+16120188642
+2221780358267
+Employe_dashboard.xaml;Leave_DBoard.xaml;MainWindow.xaml;
+>>>>>>> 1556b89bf554e9566580f26b944e753a02f39541
 
 False
 

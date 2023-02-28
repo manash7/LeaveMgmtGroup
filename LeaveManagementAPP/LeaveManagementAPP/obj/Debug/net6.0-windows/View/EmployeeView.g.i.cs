@@ -109,7 +109,7 @@ namespace LeaveManagementAPP.View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/LeaveManagementAPP;V1.0.0.0;component/view/employeeview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/LeaveManagementAPP;component/view/employeeview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\EmployeeView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

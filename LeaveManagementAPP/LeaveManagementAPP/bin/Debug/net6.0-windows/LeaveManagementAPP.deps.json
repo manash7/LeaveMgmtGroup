@@ -8,11 +8,6 @@
     ".NETCoreApp,Version=v6.0": {
       "LeaveManagementAPP/1.0.0": {
         "dependencies": {
-<<<<<<< HEAD
-=======
-          "Microsoft.EntityFrameworkCore": "7.0.3",
-          "Microsoft.EntityFrameworkCore.Design": "7.0.3",
->>>>>>> 1556b89bf554e9566580f26b944e753a02f39541
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.3",
           "Microsoft.EntityFrameworkCore.Tools": "7.0.3"
         },

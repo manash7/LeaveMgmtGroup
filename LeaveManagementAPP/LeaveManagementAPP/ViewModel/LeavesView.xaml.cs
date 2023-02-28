@@ -24,24 +24,26 @@ namespace LeaveManagementAPP.View
     /// </summary>
     public partial class LeavesView : UserControl
     {
+        LMDbContext context = new LMDbContext();
         public LeavesView()
         {
             InitializeComponent();
             LeaveDataTable();
-            MessageBox.Show("Working Fine");
+            comboStatus.ItemsSource = new string[] { "Approved", "Pending", "Denied" };
+            comboCategory.ItemsSource = context.Categories.ToList().ToString();
         }
 
 
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            var context = new LMDbContext();
+            
 
             var leave = new Leave()
             {
                 StartDate = DateStart.SelectedDate,
                 EndDate = DateEnd.SelectedDate,
-                Status = Status.Text,
+                Status = comboStatus.Text,
                 Desc = Desc.Text,
             };
 

@@ -23,25 +23,20 @@ namespace LeaveManagementAPP.View
     /// </summary>
     public partial class CategoryView : UserControl
     {
-        List<Category> categories { get; set; }
+        LMDbContext context = new LMDbContext();
         public CategoryView()
         {
             InitializeComponent();
-            CatTable();
+            CatTable(); 
             CategoryTable.SelectionChanged+= CategoryTable_SelectionChanged;
         }
 
 
+        //Adds data to the Category table  
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            var context = new LMDbContext();
             try
             {
-                if (CatName.Text != null || CatLeave.Text != string.Empty)
-                {
-                    throw new Exception("Add Some Values to the Fields.....");
-                }
-                MessageBox.Show(CatName.Text);
                 var category = new Category()
                 {
                     CategoryName = CatName.Text,
@@ -72,9 +67,9 @@ namespace LeaveManagementAPP.View
 
         }
 
+        //Update data to the Category table 
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-            var context = new LMDbContext();
             var category = new Category()
             {
                 CatID = int.Parse(textCatID.Text),
@@ -83,7 +78,6 @@ namespace LeaveManagementAPP.View
             };
             try
             {
-                
                 context.Categories.Update(category);
                 context.SaveChanges();
                 MessageBox.Show("Data Edited Successfully...");
@@ -101,9 +95,10 @@ namespace LeaveManagementAPP.View
             
 
         }
+
+        //Delete data to the Category table 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            var context = new LMDbContext();
             var category = new Category()
             {
                 CatID = int.Parse(textCatID.Text),
@@ -131,16 +126,16 @@ namespace LeaveManagementAPP.View
             textCatID.Clear();
             CatName.Clear();
             CatLeave.Clear();
-        } 
+        }
 
-
+        //for updating the table when data changes
         private void CatTable()
         {
-            var context = new LMDbContext();
             var category = context.Categories.ToList();
             CategoryTable.ItemsSource = category;   
         }
 
+        //For populating the table 
         private void CategoryTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var activeList = (Category)CategoryTable.CurrentItem;

@@ -10,7 +10,7 @@
     <Compile Update="ViewModel\CategoryView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\EmployeeView.xaml.cs">
+    <Compile Update="ViewModel\EmployeeView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="ViewModel\LeavesView.xaml.cs">

@@ -26,8 +26,8 @@ namespace LeaveManagementAPP.View
     /// </summary>
     public partial class EmployeeView : UserControl
     {
-        List<Employee>? Emp { get; set; }
-
+        LMDbContext context = new LMDbContext();
+        
         public EmployeeView()
         {
             InitializeComponent();
@@ -50,7 +50,7 @@ namespace LeaveManagementAPP.View
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            var context = new LMDbContext();
+           
 
             var Emp = new Employee()
             {

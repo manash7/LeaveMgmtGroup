@@ -57,5 +57,12 @@ namespace LeaveManagementAPP
             ChangeArea.Children.Clear();
             ChangeArea.Children.Add(u1);
         }
+
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow login = new LoginWindow();
+            login.Show();
+            Close();
+        }
     }
 }

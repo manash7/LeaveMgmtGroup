@@ -109,11 +109,8 @@ namespace LeaveManagementAPP.View
                 textEmpAddress.Text = activelist.EmpAddress;
                 textEmpEmail.Text = activelist.EmpEmail;
                 textEmpPassword.Text = activelist.EmpPassword;
-
                 comboEmpGender.SelectedItem= activelist.EmpGender;
-                //CategoryID
-                //LeaveID   
-
+                
             }
         }
     }

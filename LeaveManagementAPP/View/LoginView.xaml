@@ -21,17 +21,22 @@
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <StackPanel Grid.Row="0" Orientation="Horizontal" Background="#3AE8AD" Height="50" Width="850">
+                <StackPanel Grid.Row="0" Orientation="Horizontal" Background="#3AE8AD" Height="50" Margin="0,0,100,0">
                     <TextBlock />
                 </StackPanel>
-                <StackPanel Grid.Row="1" Margin="0,0,51,-131">
+                <StackPanel Grid.Row="1" Margin="0,0,150,-131">
+
                     <TextBlock Height="23" HorizontalAlignment="Left" Margin="10" Name="LoginHeading" Text="Login:" VerticalAlignment="Top" FontSize="17" FontStretch="ExtraCondensed"/>
-                    <TextBlock Height="23" HorizontalAlignment="Left" Margin="200,10" Name="Username" Text="Username" VerticalAlignment="Top" Width="67" />
-                    <TextBox  Height="23" HorizontalAlignment="Left"  Margin="200,10" Name="UserName" VerticalAlignment="Top" Width="247" />
-                    <TextBlock Height="23" HorizontalAlignment="Left" Margin="200,10" Name="textBlock2" Text="Password" VerticalAlignment="Top" Width="77" />
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="200,10" Name="passwordBox1" VerticalAlignment="Top" Width="247" />
-                    <Button Content="Login"  Height="23" HorizontalAlignment="Left" Margin="200,10" Name="button1" VerticalAlignment="Top" Width="104" Click="button1_Click" />
-                    <Button Content="Register" Height="23" HorizontalAlignment="Left" VerticalAlignment="Top" Width="104" Name="button2">
+
+                    <TextBlock Height="23" HorizontalAlignment="Left" Margin="200,10" Name="Email" Text="Email" VerticalAlignment="Top" Width="67" />
+                    <TextBox  Height="23" HorizontalAlignment="Left"  Margin="200,10" Name="textEmail" VerticalAlignment="Top" Width="247" />
+                    
+                    <TextBlock Height="23" HorizontalAlignment="Left" Margin="200,10" Name="Password" Text="Password" VerticalAlignment="Top" Width="77" />
+                    <PasswordBox Height="23" HorizontalAlignment="Left" Margin="200,10" Name="textPassword" VerticalAlignment="Top" Width="247" />
+                    
+                    <Button Content="Login"  Height="23" HorizontalAlignment="Left" Margin="200,10" Name="button1" VerticalAlignment="Top" Width="104" />
+
+                    <!--<Button Content="Register" Height="23" HorizontalAlignment="Left" VerticalAlignment="Top" Width="104" Name="button2">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Visibility" Value="Collapsed" />
@@ -42,10 +47,10 @@
                                 </Style.Triggers>
                             </Style>
                         </Button.Style>
-                    </Button>
+                    </Button>-->
 
 
-                    <TextBlock Height="23" HorizontalAlignment="Left" x:Name ="errormessage" VerticalAlignment="Top" Width="247" Margin="118,253,0,0"  OpacityMask="Crimson" Foreground="#FFE5572C"  />
+                    <!--<TextBlock Height="23" HorizontalAlignment="Left" x:Name ="errormessage" VerticalAlignment="Top" Width="247" Margin="118,253,0,0"  OpacityMask="Crimson" Foreground="#FFE5572C"  />-->
 
 
                 </StackPanel>
@@ -53,5 +58,5 @@
         </StackPanel>
 
     </Grid>
-    
+
 </UserControl>

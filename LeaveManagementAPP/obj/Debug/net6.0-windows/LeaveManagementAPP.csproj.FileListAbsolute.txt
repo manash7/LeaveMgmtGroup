@@ -74,3 +74,7 @@ C:\Users\Techment Technology\source\repos\New folder\LeaveManagementAPP\LeaveMan
 C:\Users\Techment Technology\source\repos\New folder\LeaveManagementAPP\LeaveManagementAPP\obj\Debug\net6.0-windows\View\LoginView.g.cs
 C:\Users\Techment Technology\source\repos\New folder\LeaveManagementAPP\LeaveManagementAPP\obj\Debug\net6.0-windows\LoginWindow.baml
 C:\Users\Techment Technology\source\repos\New folder\LeaveManagementAPP\LeaveManagementAPP\obj\Debug\net6.0-windows\View\LoginView.baml
+C:\Users\Techment Technology\source\repos\New folder\LeaveManagementAPP\LeaveManagementAPP\obj\Debug\net6.0-windows\Employe_dashboard.g.cs
+C:\Users\Techment Technology\source\repos\New folder\LeaveManagementAPP\LeaveManagementAPP\obj\Debug\net6.0-windows\Leave_DBoard .g.cs
+C:\Users\Techment Technology\source\repos\New folder\LeaveManagementAPP\LeaveManagementAPP\obj\Debug\net6.0-windows\Employe_dashboard.baml
+C:\Users\Techment Technology\source\repos\New folder\LeaveManagementAPP\LeaveManagementAPP\obj\Debug\net6.0-windows\Leave_DBoard .baml

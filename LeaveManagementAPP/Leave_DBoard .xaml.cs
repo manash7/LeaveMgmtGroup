@@ -1,4 +1,6 @@
-﻿using LeaveManagementAPP.ViewModel;
+﻿using LeaveManagementAPP.Model;
+using LeaveManagementAPP.View;
+using LeaveManagementAPP.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,169 +22,187 @@ namespace LeaveManagementAPP
     /// </summary>
     public partial class Leave_DBoard : Window
     {
-        public Leave_DBoard()
+        private readonly Leave_crud_services _crudServices;
+        LMDbContext context = new LMDbContext();
+        Employee Data { get; set; }
+
+        public Leave_DBoard(Employee data)
         {
-            //InitializeComponent();
-            //_crudServices = new Leave_crud_services();
-            //leave_list_Button_Click();
+            InitializeComponent();
+            Data = data;
+            _crudServices = new Leave_crud_services();
+            leave_list_Button_Click();
+            settingData();
         }
 
-        //private void Button_Click(object sender, RoutedEventArgs e)
-        //{
-        //    Close();
-        //}
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow login = new LoginWindow();
+            login.Show();
+            Close();
+        }
 
-        //// Leave Apply Button Functionality
-        //private async void DrawCircleButton1_Click(object sender, RoutedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        // Validation for Non Empty fields and Correct Date selection 
-        //        if (textBoxFirstName.Text != string.Empty && ComboBox1.Text != string.Empty)
-        //        {
-        //            if (StartDate.SelectedDate > DateTime.Today && EndDate.SelectedDate > DateTime.Today)
-        //            {
-        //                await _crudServices.AddBrand(textBoxFirstName.Text, ComboBox1.Text, (DateTime)StartDate.SelectedDate, (DateTime)EndDate.SelectedDate);
-        //                MessageBox.Show("Leave Applied successfullly");
-        //            }
-        //            else
-        //            {
-        //                throw new Exception("Date Cannot be Past One");
-        //            }
-
-
-        //        }
-        //        else
-        //        {
-        //            throw new Exception("Fields Cannot be empty");
-        //        }
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        MessageBox.Show(ex.Message);
-
-        //    }
-        //    finally
-        //    {
-        //        textBoxID.Clear();
-        //        textBoxFirstName.Clear();
-        //        textBoxFirstName.Focus();
-
-        //        leave_list_Button_Click();
+        // Leave Apply Button Functionality
+        private async void DrawCircleButton1_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // Validation for Non Empty fields and Correct Date selection 
+                if (textBoxName.Text != string.Empty && ComboCategory.Text != string.Empty)
+                {
+                    if (StartDate.SelectedDate > DateTime.Today && EndDate.SelectedDate > DateTime.Today)
+                    {
+                        await _crudServices.AddBrand(int.Parse(textBoxLid.Text), textBoxName.Text, int.Parse(textBoxID.Text), ComboCategory.Text, (DateTime)StartDate.SelectedDate, (DateTime)EndDate.SelectedDate);
+                        MessageBox.Show("Leave Applied successfullly");
+                    }
+                    else
+                    {
+                        throw new Exception("Date Cannot be Past One");
+                    }
 
 
-        //    }
-        //}
-        ////List of leave applied 
-        //private async Task ListBrands()
-        //{
-        //    var brandList = await _crudServices.ListBrands();
-        //    DataGridBrand.ItemsSource = brandList.ToList();
-        //}
+                }
+                else
+                {
+                    throw new Exception("Fields Cannot be empty");
+                }
 
-        //// Delete Button Functionality
-        //private async void DrawCircleButton3_Click(object sender, RoutedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        if (textBoxID.Text != string.Empty && textBoxFirstName.Text != string.Empty)
-        //        {
+            }
+            catch (Exception ex)
+            {
 
-        //            await _crudServices.DeleteBrand(int.Parse(textBoxID.Text));
-        //            MessageBox.Show("Leave WithDraw Successfully");
+                MessageBox.Show(ex.Message);
 
-        //        }
-        //        else
-        //        {
-        //            throw new Exception("Field Cannot be empty");
+            }
+            finally
+            {
+                
 
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //    finally
-        //    {
-        //        await ListBrands();
-        //        textBoxID.Clear();
-        //        textBoxFirstName.Clear();
-
-        //        textBoxID.Focus();
+                leave_list_Button_Click();
 
 
-        //    }
-        //}
+            }
+        }
+        //List of leave applied 
+        private async Task ListBrands()
+        {
+            var brandList = await _crudServices.ListBrands();
+            DataGridBrand.ItemsSource = brandList.ToList();
+        }
 
-        ////Update Button Functionality
+        // Delete Button Functionality
+        private async void DrawCircleButton3_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            { 
+                if (textBoxID.Text != string.Empty && textBoxName.Text != string.Empty)
+                {
 
-        //private async void Edit_button_Click(object sender, RoutedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        if (textBoxID.Text != string.Empty && textBoxFirstName.Text != string.Empty)
-        //        {
-        //            await _crudServices.UpdateBrand(int.Parse(textBoxID.Text), textBoxFirstName.Text, ComboBox1.Text, (DateTime)StartDate.SelectedDate, (DateTime)EndDate.SelectedDate);
-        //            throw new Exception("Data Successfully Updateddd");
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //    finally
-        //    {
-        //        await ListBrands();
-        //    }
-        //}
+                    await _crudServices.DeleteBrand(int.Parse(textBoxLid.Text));
+                    MessageBox.Show("Leave WithDraw Successfully");
 
-        //// DataGrid Functionality for Displying details of Leave Applied 
-        //private void DataGridBrand_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
+                }
+                else
+                {
+                    throw new Exception("Field Cannot be empty");
+                }
+            
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                await ListBrands();
 
-        //    try
-        //    {
-        //        var activelist = (Leave_Dashboard)DataGridBrand.CurrentItem;
+            }
+        }
 
-        //        if (activelist != null)
-        //        {
-        //            textBoxID.Text = activelist.ID.ToString();
-        //            textBoxFirstName.Text = activelist.Name;
-        //            ComboBox1.Text = activelist.Category;
-        //            StartDate.SelectedDate = activelist.DateStart;
-        //            EndDate.SelectedDate = activelist.DateEnd;
-        //        }
+        //Update Button Functionality
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
+        private async void Edit_button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (textBoxID.Text != string.Empty && textBoxName.Text != string.Empty)
+                {
+                    await _crudServices.UpdateBrand(int.Parse(textBoxLid.Text), ComboCategory.Text, (DateTime)StartDate.SelectedDate, (DateTime)EndDate.SelectedDate);
+                    throw new Exception("Data Successfully Updateddd");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                await ListBrands();
+            }
+        }
 
-        //}
+        // DataGrid Functionality for Displying details of Leave Applied 
+        private void DataGridBrand_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
-        ////Leave list button Functionality
-        //private async void leave_list_Button_Click()
-        //{
-        //    try
-        //    {
-        //        await ListBrands();
+            try
+            {
+                var activelist = (Leave)DataGridBrand.CurrentItem;
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //}
+                if (activelist != null)
+                {
+                    textBoxLid.Text = activelist.LID.ToString();
+                    textBoxID.Text = activelist.EmployeeID.ToString();
+                    var data = context.Employees.Where(c => c.EmpID == activelist.EmployeeID).FirstOrDefault();
+                    if (data != null)
+                    {
+                        textBoxName.Text = data.EmpName;
 
-        //// Profilr Button Navigation 
-        //private void Button_Click_1(object sender, RoutedEventArgs e)
-        //{
-        //    Employe_dashboard ed = new Employe_dashboard();
-        //    ed.Show();
-        //    Close();
-        //}
+                    }
+                    ComboCategory.SelectedItem = activelist.LeaveCategory;
+                    StartDate.SelectedDate = activelist.StartDate;
+                    EndDate.SelectedDate = activelist.EndDate;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        //Leave list button Functionality
+        private async void leave_list_Button_Click()
+        {
+            try
+            {
+                await ListBrands();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        // Profilr Button Navigation 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Employe_dashboard ed = new Employe_dashboard(Data);
+            ed.Show();
+            Close();
+        }
+        private void settingData()
+        {
+            //Setting Data to the 
+
+            textBoxID.Text = Data.EmpID.ToString();
+            textBoxName.Text = Data.EmpName;
+
+            //Populating Category combo box
+            ComboCategory.ItemsSource = context.Categories.Select(e => e.CategoryName).ToArray();
+            //comboStatus.ItemsSource = new string[] { "Approved", "Pending", "Denied" };
+        }
     }
 }

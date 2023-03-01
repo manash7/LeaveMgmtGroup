@@ -7,6 +7,101 @@
         mc:Ignorable="d"
         Title="Leave_DBoard" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+        <!-- Profile and Logout  button Pannel-->
+        <StackPanel Grid.Column="0" Orientation="Vertical" Background="#3F79DA">
+            <!--Profile BUtton -->
+            <Button Content="Profile" Margin="0,10" FontSize="20" FontWeight="Bold" Background="#3F79DA"  BorderBrush="#3F79DA" Click="Button_Click_1"/>
+            <!--LogOut BUtton -->
+            <Button Content="Logout" Margin="0,320" FontSize="20" FontWeight="Bold" Background="#3F79DA" BorderBrush="#3F79DA" Click="Button_Click"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Margin="30,0">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition   Height="*"/>
+                    <RowDefinition   Height="*"/>
+                    <RowDefinition   Height="*"/>
+                    <RowDefinition   Height="*"/>
+                    <RowDefinition   Height="*"/>
+                    <RowDefinition   Height="*"/>
+                    <RowDefinition   Height="Auto"/>
+
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Orientation="Horizontal" Background="#3AE8AD" Height="50" Margin="-29 1">
+
+                </StackPanel>
+                <!--Heading-->
+
+                <Label Content="Leave Manage" HorizontalAlignment="Left" Margin="228,5,0,0" VerticalAlignment="Top" Width="224" FontWeight="Bold" FontSize="20"/>
+                <StackPanel Grid.Row="1" Orientation="Horizontal">
+
+                    <TextBlock Height="23" HorizontalAlignment="Left" Margin="50,20,0,0" Name="textBlockID" Text=" ID" VerticalAlignment="Top" Width="110" />
+                    <TextBlock Height="23" HorizontalAlignment="Left" Margin="50,20,0,0" Name="textBlockName" Text="Name" VerticalAlignment="Top" Width="110" />
+
+
+                </StackPanel>
+                <StackPanel Grid.Row="2" Orientation="Horizontal">
+
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="5,10,0,0" Name="textBoxID" VerticalAlignment="Top" Width="150" IsEnabled="False"/>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="15,10,0,0" Name="textBoxName" VerticalAlignment="Top" Width="150" IsEnabled="False"/>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="15,10,0,0" Name="textBoxLid" VerticalAlignment="Top" Width="150" Visibility="Hidden" IsEnabled="False"/>
+
+                    <!--Save  BUtton -->
+
+                    <Button x:Name="save_button" Height="20" Width="100" Content="Leave Apply"  VerticalAlignment="Top" HorizontalAlignment="Right" Margin="35,20,0,0" Click="DrawCircleButton1_Click" />
+
+                </StackPanel>
+                <StackPanel Grid.Row="3" Orientation="Horizontal">
+
+                    <TextBlock Height="23" HorizontalAlignment="Left" Margin="50,10,0,0" Name="textBlockDateStart" Text="Date Start" VerticalAlignment="Top" Width="110" />
+
+                    <TextBlock Height="23" HorizontalAlignment="Left" Margin="50,10,0,0" Name="textBlockDateEnd" Text="Date End" VerticalAlignment="Top" Width="110" />
+                    <TextBlock Height="23" HorizontalAlignment="Left" Margin="20,10,0,0" Name="textBlockCategory" Text=" Category" VerticalAlignment="Top" Width="110" />
+                    <!--Edit BUtton -->
+
+                    <Button x:Name="Edit_button" Height="20" Width="100" Content="Edit" HorizontalAlignment="Left" Margin="70,10,0,0"  VerticalAlignment="Top" Click="Edit_button_Click"  />
+
+                </StackPanel>
+                <StackPanel Grid.Row="4" Orientation="Horizontal">
+                    <!--ComboBox  for Category -->
+
+
+                    <!--Start Date Date picker-->
+                    <DatePicker Height="30" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="StartDate" VerticalAlignment="Top" Width="150" />
+                    <!--End Date Date picker-->
+                    <DatePicker Height="30" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="EndDate" VerticalAlignment="Top" Width="150" />
+                    <ComboBox Name="ComboCategory" Width="150" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,10,0,0"/>
+                    <!--Withdraw BUtton -->
+                    <Button x:Name="Delete_button" Height="20" Width="100" Content="Withdraw"  HorizontalAlignment="Left" Margin="45,10,0,0"  VerticalAlignment="Top" Click="DrawCircleButton3_Click" />
+
+                </StackPanel>
+                <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="45,0">
+
+                </StackPanel>
+                <StackPanel Grid.Row="6">
+                    <Label Content="Leave List" HorizontalAlignment="Left" VerticalAlignment="Top" Width="224" FontWeight="Bold" FontSize="15" />
+
+                    <!--Data Grid -->
+
+                    <DataGrid 
+            Grid.Column="4" 
+            Grid.Row="1"
+            x:Name="DataGridBrand"
+            Margin="5,5,5,5" Grid.RowSpan="2" SelectionChanged="DataGridBrand_SelectionChanged">
+
+                    </DataGrid>
+                </StackPanel>
+
+            </Grid>
+
+
+        </StackPanel>
     </Grid>
 </Window>

@@ -1,5 +1,7 @@
-﻿using LeaveManagementAPP.Model;
+﻿
+using LeaveManagementAPP.Model;
 using LeaveManagementAPP.ViewModel;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,29 +31,31 @@ namespace LeaveManagementAPP.View
         {
             InitializeComponent();
             LeaveDataTable();
+
             comboStatus.ItemsSource = new string[] { "Approved", "Pending", "Denied" };
-            var data = context.Categories.ToArray();
-            foreach (var item in data)
-            {
-                comboCategory.Items.Add(item.CategoryName);
-            }
+
+            LeaveTable.SelectionChanged += LeaveTable_SelectionChanged;
+            comboCategory.ItemsSource = context.Categories.Select(e => e.CategoryName).ToArray();
+            
         }
 
 
 
-        private void Add_Click(object sender, RoutedEventArgs e)
+        private void Update_Click(object sender, RoutedEventArgs e)
         {
-            
 
+            //var message = context.Employees.Where(e => e.EmpID == int.Parse(textEmpID.Text)).ToList();
             var leave = new Leave()
             {
+                LID = int.Parse(textLID.Text),
+                EmployeeID = int.Parse(textEmpID.Text),
                 StartDate = DateStart.SelectedDate,
                 EndDate = DateEnd.SelectedDate,
                 Status = comboStatus.Text,
-                Desc = Desc.Text,
+                LeaveCategory = comboCategory.Text,
             };
 
-            context.Leaves.Add(leave);
+            context.Leaves.Update(leave);
             context.SaveChanges();
         }
 
@@ -59,7 +63,32 @@ namespace LeaveManagementAPP.View
         {
             var context = new LMDbContext();
             var leaves = context.Leaves.ToList();
-            LeavesTable.ItemsSource = leaves;
+            LeaveTable.ItemsSource = leaves;
+        }
+
+        private void LeaveTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var activelist = (Leave)LeaveTable.CurrentItem;
+
+            if (activelist != null)
+            {
+                textLID.Text = activelist.LID.ToString();
+                textEmpID.Text = activelist.EmployeeID.ToString();
+                //textEmpName.Text = context.Leaves.Include(l => l.Employee.EmpID.Equals(((uint)activelist.EmployeeID)) ).ToString();
+                var data = context.Employees.Where(c => c.EmpID == activelist.EmployeeID).FirstOrDefault();
+                if (data != null)
+                {
+                    textEmpName.Text = data.EmpName;
+
+                }
+                //textEmpName.Text = context.Leaves.Where(l => l.Employee.EmpID.Equals((uint)activelist.EmployeeID)).ToString();
+                comboStatus.SelectedItem = activelist.Status;
+                DateStart.Text = activelist.StartDate.ToString();
+                DateEnd.Text = activelist.EndDate.ToString();
+                comboCategory.SelectedItem = activelist.LeaveCategory.ToString();
+                
+
+            }
         }
     }
 }

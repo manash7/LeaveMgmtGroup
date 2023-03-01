@@ -7,43 +7,43 @@ using System.Threading.Tasks;
 
 namespace LeaveManagementAPP.ViewModel
 {
-    internal class NonqueryDataService<T> where T : class
+    public class NonqueryDataService<T> where T : class
     {
 
-        //private readonly Leave_DashboardContextFactory _contextFactory;
-        //private readonly NonqueryDataService<T> _nonQueryDataService;
+        private readonly Leave_DashboardContextFactory _contextFactory;
+        private readonly NonqueryDataService<T> _nonQueryDataService;
 
-        //public NonqueryDataService(Leave_DashboardContextFactory contextFactory)
-        //{
-        //    _contextFactory = contextFactory;
-        //}
-        ////Creating Create funtion as event
-        //public async Task<T> Create(T entity)
-        //{
+        public NonqueryDataService(Leave_DashboardContextFactory contextFactory)
+        {
+            _contextFactory = contextFactory;
+        }
+        //Creating Create funtion as event
+        public async Task<T> Create(T entity)
+        {
 
-        //    using Leave_DashboardDBContext context = _contextFactory.CreateDbContext();
-        //    EntityEntry<T> createdResult = await context.Set<T>().AddAsync(entity);
-        //    await context.SaveChangesAsync();
-        //    return createdResult.Entity;
-        //}
+            using LMDbContext context = _contextFactory.CreateDbContext();
+            EntityEntry<T> createdResult = await context.Set<T>().AddAsync(entity);
+            await context.SaveChangesAsync();
+            return createdResult.Entity;
+        }
 
-        ////Creating Delete funtion as event
-        //public async Task<bool> Delete(T entity)
-        //{
+        //Creating Delete funtion as event
+        public async Task<bool> Delete(T entity)
+        {
 
-        //    using Leave_DashboardDBContext context = _contextFactory.CreateDbContext();
-        //    context.Set<T>().Remove(entity);
-        //    await context.SaveChangesAsync();
-        //    return true;
-        //}
+            using LMDbContext context = _contextFactory.CreateDbContext();
+            context.Set<T>().Remove(entity);
+            await context.SaveChangesAsync();
+            return true;
+        }
 
-        ////Creating Update funtion as event
-        //public async Task<T> Update(T entity)
-        //{
-        //    using Leave_DashboardDBContext context = _contextFactory.CreateDbContext();
-        //    context.Set<T>().Update(entity);
-        //    await context.SaveChangesAsync();
-        //    return entity;
-        //}
+        //Creating Update funtion as event
+        public async Task<T> Update(T entity)
+        {
+            using LMDbContext context = _contextFactory.CreateDbContext();
+            context.Set<T>().Update(entity);
+            await context.SaveChangesAsync();
+            return entity;
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Internal;
+﻿using LeaveManagementAPP.Model;
+using LeaveManagementAPP.ViewModel;
+using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,19 +22,27 @@ namespace LeaveManagementAPP
     /// </summary>
     public partial class Employe_dashboard : Window
     {
-        public Employe_dashboard()
+        LMDbContext context = new LMDbContext();
+        Employee Data { get; set; } 
+        public Employe_dashboard(Employee data)
         {
             InitializeComponent();
+            Data = data;
+            DataInsert();
+
         }
         private void Leave_button(object sender, RoutedEventArgs e)
         {
-            //Leave_DBoard ld = new Leave_DBoard();
-            //ld.Show();
+            
+            Leave_DBoard ld = new Leave_DBoard(Data);
+            ld.Show();
             Close();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            LoginWindow login = new LoginWindow();
+            login.Show();
             Close();
         }
 
@@ -49,5 +59,18 @@ namespace LeaveManagementAPP
             //context.SaveChanges();
 
         }
-    }
+        public void DataInsert()
+        {
+            //Connection
+            var bd = new LMDbContext();
+
+            //Setting Data inside textboxes
+
+            textBoxID.Text = Data.EmpID.ToString();
+            textBoxName.Text = Data.EmpName;
+            textBoxGender.Text = Data.EmpGender;
+            textBoxEmail.Text = Data.EmpEmail;
+            textBoxAddress.Text = Data.EmpAddress;
+        }   
+    }       
 }

@@ -22,28 +22,30 @@ namespace LeaveManagementAPP.View
     /// </summary>
     public partial class LoginView : UserControl
     {
+
         public LoginView()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
-        {
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
 
-            var New = new MainWindow();
-            New.Show();
+        //    var New = new MainWindow();
+        //    New.Show();
 
-            //string username = UserName.Text;
-            //string password = passwordBox1.Text;
-            //Debug.WriteLine(username + ":" + password);
+        //    string username = UserName.Text;
+        //    string password = passwordBox1.Text;
+        //    Debug.WriteLine(username + ":" + password);
 
-            //LoginViewModel loginViewModel = this.DataContext as LoginViewModel;
-            //if (loginViewModel != null)
-            //{
-            //    loginViewModel.LoginAsync(username, password);
-            //}
+        //    LoginViewModel loginViewModel = this.DataContext as LoginViewModel;
+        //    if (loginViewModel != null)
+        //    {
+        //        loginViewModel.LoginAsync(username, password);
+        //    }
+        //}
 
 
-        }
+
     }
 }

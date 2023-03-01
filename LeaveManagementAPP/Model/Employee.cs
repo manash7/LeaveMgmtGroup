@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace LeaveManagementAPP.Model
 {
-    class Employee
+    public class Employee
     {
-
+        [Key]
         public int EmpID { get; set; }
 
         public string? EmpName { get; set; }
@@ -23,8 +23,8 @@ namespace LeaveManagementAPP.Model
 
         public bool Is_SuperUser { get; set; }
 
-        public int LeaveID { get; set; } 
-        public Leave Leave { get; set; }    
+
+        public ICollection<Leave>? Leaves { get; set; }
 
     }
 }

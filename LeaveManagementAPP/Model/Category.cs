@@ -7,10 +7,14 @@ using System.Threading.Tasks;
 
 namespace LeaveManagementAPP.Model
 {
-    class Category
+    /// <summary>
+    /// 
+    /// </summary>
+    public class Category
     {
         [Key]
         public int CatID { get; set; }
+
 
         public string? CategoryName { get; set; }
 

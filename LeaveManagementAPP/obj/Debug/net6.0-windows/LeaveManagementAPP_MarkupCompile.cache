@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\Techment Technology\source\repos\New folder\LeaveManagementAPP\LeaveManagementAPP\App.xaml
-61104955651
+8-881683452
 
-31-871454869
+20-86141038
 222184377096
-LoginWindow.xaml;MainWindow.xaml;View\CategoryView.xaml;View\EmployeeView.xaml;View\LeavesView.xaml;View\LoginView.xaml;
+Employe_dashboard.xaml;Leave_DBoard .xaml;LoginWindow.xaml;MainWindow.xaml;View\CategoryView.xaml;View\EmployeeView.xaml;View\LeavesView.xaml;View\LoginView.xaml;
 
-True
+False
 

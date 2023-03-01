@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LeaveManagementAPP.View"
         mc:Ignorable="d"
-        Title="Leave Management" Height="450" Width="800">
+        Title="Leave Management" Height="450" Width="830">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -22,7 +22,7 @@
                 <Button Content="Categories" Height="30" Click="Category_Dashboard_Click"/>
             </StackPanel>
             <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Left">
-                <Button Content="Logout" Margin="25 0 0 40" Width="80"/>
+                <Button Content="Logout" Margin="25 0 0 40" Width="80" Click="Logout_Click"/>
             </StackPanel>
 
 

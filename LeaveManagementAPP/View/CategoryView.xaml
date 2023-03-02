@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LeaveManagementAPP.View"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="600">
+             Height="450" Width="600">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -59,7 +59,10 @@
                 </StackPanel>
             </Grid>
             <StackPanel Grid.Row="1">
-                <DataGrid Grid.Row="1" x:Name="CategoryTable" Margin="10 10 10 0" Height="300" Width="580" SelectionChanged="CategoryTable_SelectionChanged"/>
+                <DataGrid Grid.Row="1" x:Name="CategoryTable" Margin="10 10 10 0" 
+                          Height="230" Width="580" SelectionChanged="CategoryTable_SelectionChanged" 
+                          AutoGenerateColumns="True" ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                          IsReadOnly="True"/>
 
             </StackPanel>
         </Grid>

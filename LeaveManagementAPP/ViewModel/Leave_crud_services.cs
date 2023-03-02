@@ -17,7 +17,7 @@ namespace LeaveManagementAPP.ViewModel
             _crudServices = new GenericDataService<Leave>(new Leave_DashboardContextFactory());
         }
         // Creating Add Function 
-        public async Task<Leave> AddBrand(int lid ,string name, int id, string category, DateTime StartDate, DateTime EndDate)
+        public async Task<Leave> AddBrand(string name, int id, string category, DateTime StartDate, DateTime EndDate)
         {
             try
             {

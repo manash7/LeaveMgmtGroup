@@ -55,7 +55,7 @@
 
                     <!--Save  BUtton -->
 
-                    <Button x:Name="save_button" Height="20" Width="100" Content="Leave Apply"  VerticalAlignment="Top" HorizontalAlignment="Right" Margin="35,20,0,0" Click="DrawCircleButton1_Click" />
+                    <!--<Button x:Name="save_button" Height="20" Width="100" Content="Leave Apply"  VerticalAlignment="Top" HorizontalAlignment="Right" Margin="35,20,0,0" Click="DrawCircleButton1_Click" />-->
 
                 </StackPanel>
                 <StackPanel Grid.Row="3" Orientation="Horizontal">
@@ -66,8 +66,10 @@
                     <TextBlock Height="23" HorizontalAlignment="Left" Margin="20,10,0,0" Name="textBlockCategory" Text=" Category" VerticalAlignment="Top" Width="110" />
                     <!--Edit BUtton -->
 
-                    <Button x:Name="Edit_button" Height="20" Width="100" Content="Edit" HorizontalAlignment="Left" Margin="70,10,0,0"  VerticalAlignment="Top" Click="Edit_button_Click"  />
-
+                    <Button x:Name="save_button" Height="20" Width="100" Content="Leave Apply" HorizontalAlignment="Left" Margin="70,10,0,0"  VerticalAlignment="Top" Click="DrawCircleButton1_Click"  />
+                    <!--E<Button x:Name="Edit_button" Height="20" Width="100" Content="Edit" HorizontalAlignment="Left" Margin="70,10,0,0"  VerticalAlignment="Top" Click="Edit_button_Click"  />-->
+                    
+                    
                 </StackPanel>
                 <StackPanel Grid.Row="4" Orientation="Horizontal">
                     <!--ComboBox  for Category -->
@@ -78,6 +80,7 @@
                     <!--End Date Date picker-->
                     <DatePicker Height="30" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="EndDate" VerticalAlignment="Top" Width="150" />
                     <ComboBox Name="ComboCategory" Width="150" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,10,0,0"/>
+
                     <!--Withdraw BUtton -->
                     <Button x:Name="Delete_button" Height="20" Width="100" Content="Withdraw"  HorizontalAlignment="Left" Margin="45,10,0,0"  VerticalAlignment="Top" Click="DrawCircleButton3_Click" />
 
@@ -94,8 +97,15 @@
             Grid.Column="4" 
             Grid.Row="1"
             x:Name="DataGridBrand"
-            Margin="5,5,5,5" Grid.RowSpan="2" SelectionChanged="DataGridBrand_SelectionChanged">
-
+            Margin="5,5,5,5" Grid.RowSpan="2" SelectionChanged="DataGridBrand_SelectionChanged" AutoGenerateColumns="False" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="LID" Binding="{Binding LID}"/>
+                            <DataGridTextColumn Header="LeaveCategory" Binding="{Binding LeaveCategory}"/>
+                            <DataGridTextColumn Header="StartDate" Binding="{Binding StartDate}"/>
+                            <DataGridTextColumn Header="EndDate" Binding="{Binding EndDate}"/>
+                            <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
+                            <!--<DataGridTextColumn Header="EmployeeID" Binding="{Binding EmployeeID}"/>-->
+                        </DataGrid.Columns>
                     </DataGrid>
                 </StackPanel>
 

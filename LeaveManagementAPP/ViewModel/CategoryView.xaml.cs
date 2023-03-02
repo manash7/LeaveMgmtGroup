@@ -39,32 +39,50 @@ namespace LeaveManagementAPP.View
             CategoryTable.SelectionChanged+= CategoryTable_SelectionChanged;
         }
 
+        //for updating the table when data changes
+        private void CatTable()
+        {
+            LMDbContext context = new LMDbContext();
+            var category = context.Categories.ToList();
+            CategoryTable.ItemsSource = category;
+        }
+
+        //For populating TextBox When Selection Changes
+        private void CategoryTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //Selection Changes is used when we select any data inside Datagrid
+            var activeList = (Category)CategoryTable.CurrentItem;
+            if (activeList != null)
+            {
+                textCatID.Text = activeList.CatID.ToString();
+                CatName.Text = activeList.CategoryName;
+                CatLeave.Text = activeList.CategoryLeaveCount.ToString();
+            }
+        }
 
         //Adds Category data to the Category table  
         private void Add_Click(object sender, RoutedEventArgs e)
         {
+            // Creating Class object and storing data inside it 
+            var category = new Category()
+            {
+                CategoryName = CatName.Text,
+                CategoryLeaveCount = int.Parse(CatLeave.Text)
+            };
             try
             {
-                // Creating Class object and storing data inside it 
-                var category = new Category()
-                {
-                    CategoryName = CatName.Text,
-                    CategoryLeaveCount = int.Parse(CatLeave.Text)
-                };
                 // Adds Data to The database
                 context.Categories.Add(category);
                 context.SaveChanges();
 
                 //Show Message if Successful
                 MessageBox.Show("Data Added Successfully...");
-
             }
             catch (Exception ex)
             {
                 //
                 MessageBox.Show(ex.Message);
             }
-
             finally
             {
                 //Clear Fields
@@ -73,9 +91,8 @@ namespace LeaveManagementAPP.View
                 //Update Table When Data Changes
                 CatTable();
 
+                category = null;
             }
-            
-
         }
 
         //Update data to the Category table 
@@ -110,6 +127,7 @@ namespace LeaveManagementAPP.View
                 //Clear Fields
                 ClearFields();
 
+                category = null;
             }   
         }
 
@@ -142,10 +160,9 @@ namespace LeaveManagementAPP.View
                 //Clear Fields
                 ClearFields();
 
-                
+                category = null;
             }
         }
-
 
         //For Clearing Fields
         private void ClearFields()
@@ -153,26 +170,6 @@ namespace LeaveManagementAPP.View
             textCatID.Clear();
             CatName.Clear();
             CatLeave.Clear();
-        }
-
-        //for updating the table when data changes
-        private void CatTable()
-        {
-            var category = context.Categories.ToList();
-            CategoryTable.ItemsSource = category;   
-        }
-
-        //For populating TextBox When Selection Changes
-        private void CategoryTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            //Selection Changes is used when we select any data inside Datagrid
-            var activeList = (Category)CategoryTable.CurrentItem;
-            if (activeList != null)
-            {
-                textCatID.Text = activeList.CatID.ToString();
-                CatName.Text = activeList.CategoryName;
-                CatLeave.Text = activeList.CategoryLeaveCount.ToString();
-            }
-        }
+        }  
     }
 }

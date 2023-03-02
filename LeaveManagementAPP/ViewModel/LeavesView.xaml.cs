@@ -50,7 +50,6 @@ namespace LeaveManagementAPP.View
                 Status = comboStatus.Text,
                 LeaveCategory = comboCategory.SelectedItem.ToString()
             };
-
             try
             {
                 LMDbContext context = new LMDbContext();
@@ -69,6 +68,8 @@ namespace LeaveManagementAPP.View
 
                 //Update Table When Data Changes
                 LeaveDataTable();
+
+                leave = null;
             }
         }
 
@@ -78,16 +79,36 @@ namespace LeaveManagementAPP.View
             {
                 LID = int.Parse(textLID.Text),
             };
-            LMDbContext context = new LMDbContext();
+            try
+            {
+                LMDbContext context = new LMDbContext();
 
-            context.Leaves.Remove(leave);
-            context.SaveChanges();
+                context.Leaves.Remove(leave);
+                context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                //Clear Fields
+                ClearFields();
+
+                //Update Table When Data Changes
+                LeaveDataTable();
+
+                leave = null;
+            }
         }
         public void LeaveDataTable()
         {
+            //Getting And Setting Data inside DataGrid
             var context = new LMDbContext();
-            var leaves = context.Leaves.ToList();
+            var leaves = context.Leaves.Include(l => l.Employee).ToList();
             LeaveTable.ItemsSource = leaves;
+            
+            //Populating Values inside ComboBox
             comboStatus.ItemsSource = new string[] { "Approved", "Pending", "Denied" };
             comboCategory.ItemsSource = context.Categories.Select(e => e.CategoryName).ToArray();
         }
@@ -124,8 +145,8 @@ namespace LeaveManagementAPP.View
             textEmpID.Clear();
             //DateStart;
             //DateEnd.Clear();
-            //comboStatus.Clear();
-            //comboCategory.Clear();
+            comboStatus.SelectedItem = null;
+            comboCategory.SelectedItem = null;
 
         }
     }

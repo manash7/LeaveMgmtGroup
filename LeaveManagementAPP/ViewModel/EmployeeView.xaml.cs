@@ -43,10 +43,28 @@ namespace LeaveManagementAPP.View
         //for updating the table when data changes
         public void EmpDataTable()
         {
+            LMDbContext context = new LMDbContext();
             var Emp = context.Employees.ToList();
             EmployeeTable.ItemsSource = Emp;
             comboEmpGender.ItemsSource = new string[] { "Male", "Female" };
+            comboIsAdmin.ItemsSource = new string[] { "True", "False" };
+        }
 
+        //For populating TextBox When Selection Changes
+        private void EmployeeTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var activelist = (Employee)EmployeeTable.CurrentItem;
+
+            if (activelist != null)
+            {
+                textEmpID.Text = activelist.EmpID.ToString();
+                textEmpName.Text = activelist.EmpName;
+                textEmpAddress.Text = activelist.EmpAddress;
+                textEmpEmail.Text = activelist.EmpEmail;
+                textEmpPassword.Text = activelist.EmpPassword;
+                comboEmpGender.SelectedItem = activelist.EmpGender;
+                comboIsAdmin.SelectedItem = activelist.Is_SuperUser.ToString();
+            }
         }
 
         //Adds Employee data to the Category table
@@ -60,8 +78,8 @@ namespace LeaveManagementAPP.View
                 EmpEmail = textEmpEmail.Text,
                 EmpPassword = textEmpPassword.Text,
                 EmpGender = comboEmpGender.SelectedItem.ToString(),
+                Is_SuperUser = comboIsAdmin.SelectedItem == "True"
             };
-
             try
             {
                 LMDbContext context = new LMDbContext();
@@ -85,10 +103,9 @@ namespace LeaveManagementAPP.View
 
                 //Update Table When Data Changes
                 EmpDataTable();
+
+                Emp= null;
             }
-
-
-
         }
 
         //Delete Employee data to the Category Table
@@ -98,7 +115,6 @@ namespace LeaveManagementAPP.View
             {
                 EmpID = int.Parse(textEmpID.Text),
             };
-
             try
             {
                 LMDbContext context = new LMDbContext();
@@ -117,6 +133,8 @@ namespace LeaveManagementAPP.View
 
                 //Update Table When Data Changes
                 EmpDataTable();
+
+                Emp= null;
             }
         }
 
@@ -132,8 +150,8 @@ namespace LeaveManagementAPP.View
                 EmpEmail = textEmpEmail.Text,
                 EmpPassword = textEmpPassword.Text,
                 EmpGender = comboEmpGender.SelectedItem.ToString(),
+                Is_SuperUser = comboIsAdmin.SelectedItem == "True"
             };
-
             try
             {
                 LMDbContext context = new LMDbContext();
@@ -153,25 +171,12 @@ namespace LeaveManagementAPP.View
 
                 //Update Table When Data Changes
                 EmpDataTable();
+
+                //
+                Emp = null;
             }  
         }
 
-        //For populating TextBox When Selection Changes
-        private void EmployeeTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var activelist = (Employee)EmployeeTable.CurrentItem;
-
-            if (activelist != null)
-            {
-                textEmpID.Text = activelist.EmpID.ToString();
-                textEmpName.Text = activelist.EmpName;
-                textEmpAddress.Text = activelist.EmpAddress;
-                textEmpEmail.Text = activelist.EmpEmail;
-                textEmpPassword.Text = activelist.EmpPassword;
-                comboEmpGender.SelectedItem = activelist.EmpGender;
-
-            }
-        }
         private void ClearFields()
         {
             textEmpID.Clear();
@@ -179,7 +184,8 @@ namespace LeaveManagementAPP.View
             textEmpAddress.Clear();
             textEmpEmail.Clear();
             textEmpPassword.Clear();
-            //comboEmpGender.Items.Clear();
+            comboEmpGender.SelectedItem = null;
+            comboIsAdmin.SelectedItem = null;
         }
     }
 }

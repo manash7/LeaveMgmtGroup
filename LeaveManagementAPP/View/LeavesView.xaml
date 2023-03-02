@@ -67,10 +67,10 @@
                          VerticalScrollBarVisibility="Visible" Height="70"/>-->
 
                                 <Label Content="Category" Margin="10 0 0 0"/>
-                                <ComboBox x:Name="comboCategory" Margin="10 0 10 10"  VerticalContentAlignment="Center" />
+                                <ComboBox x:Name="comboCategory" Margin="10 0 10 0"  VerticalContentAlignment="Center" />
 
                                 <Label Content="Status" Margin="10 0 0 0"/>
-                                <ComboBox x:Name="comboStatus" Margin="10 0 10 10"  VerticalContentAlignment="Center" />
+                                <ComboBox x:Name="comboStatus" Margin="10 0 10 0"  VerticalContentAlignment="Center" />
                             </StackPanel>
 
 
@@ -85,7 +85,19 @@
                         <Button Content="Delete" Margin="0 10 10 0" Width="120" Click="Delete_Click"/>
                     </StackPanel>
                 </Grid>
-                <DataGrid Grid.Row="1" Name="LeaveTable" Margin="10 0 10 0" SelectionChanged="LeaveTable_SelectionChanged"/>
+                <DataGrid Grid.Row="1" Name="LeaveTable" Margin="10,0,10,0" 
+                          Height="200" Width="580" SelectionChanged="LeaveTable_SelectionChanged" 
+                          AutoGenerateColumns="False" ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                          IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="EmpID" Binding="{Binding Employee.EmpID}"/>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Employee.EmpName}"/>
+                        <DataGridTextColumn Header="Category" Binding="{Binding LeaveCategory}"/>
+                        <DataGridTextColumn Header="Start" Binding="{Binding StartDate}"/>
+                        <DataGridTextColumn Header="End" Binding="{Binding EndDate}"/>
+                        <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
             </Grid>
         </Grid>
     </Grid>

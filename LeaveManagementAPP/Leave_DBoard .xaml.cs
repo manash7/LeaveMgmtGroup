@@ -1,6 +1,7 @@
 ﻿using LeaveManagementAPP.Model;
 using LeaveManagementAPP.View;
 using LeaveManagementAPP.ViewModel;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,7 +53,7 @@ namespace LeaveManagementAPP
                 {
                     if (StartDate.SelectedDate > DateTime.Today && EndDate.SelectedDate > DateTime.Today)
                     {
-                        await _crudServices.AddBrand(int.Parse(textBoxLid.Text), textBoxName.Text, int.Parse(textBoxID.Text), ComboCategory.Text, (DateTime)StartDate.SelectedDate, (DateTime)EndDate.SelectedDate);
+                        await _crudServices.AddBrand(textBoxName.Text, int.Parse(textBoxID.Text), ComboCategory.Text, (DateTime)StartDate.SelectedDate, (DateTime)EndDate.SelectedDate);
                         MessageBox.Show("Leave Applied successfullly");
                     }
                     else
@@ -76,18 +77,21 @@ namespace LeaveManagementAPP
             }
             finally
             {
-                
+                await ListBrands();
 
                 leave_list_Button_Click();
 
+                ComboCategory.SelectedItem = null;
 
             }
         }
         //List of leave applied 
         private async Task ListBrands()
         {
-            var brandList = await _crudServices.ListBrands();
-            DataGridBrand.ItemsSource = brandList.ToList();
+            //var brandList = await _crudServices.ListBrands();
+            var brandList = context.Leaves.Include(l => l.Employee).Where(e => e.EmployeeID == Data.EmpID).ToList();
+                //.Where(e => e.EmployeeID == Data.EmpID).ToList();
+            DataGridBrand.ItemsSource = brandList;
         }
 
         // Delete Button Functionality
@@ -115,6 +119,7 @@ namespace LeaveManagementAPP
             finally
             {
                 await ListBrands();
+                
 
             }
         }

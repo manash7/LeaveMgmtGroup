@@ -105,7 +105,7 @@ namespace LeaveManagementAPP.View
         {
             //Getting And Setting Data inside DataGrid
             var context = new LMDbContext();
-            var leaves = context.Leaves.Include(l => l.Employee).ToList();
+            var leaves = context.Leaves.Include(l => l.Employee).Where(e => e.Status != "Approved").ToList();
             LeaveTable.ItemsSource = leaves;
             
             //Populating Values inside ComboBox

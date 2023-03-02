@@ -23,35 +23,36 @@ namespace LeaveManagementAPP.View
 {
     /// <summary>
     /// Interaction logic for Employee.xaml
+    /// Author - Manash 
+    /// This Modules holds the Functional part for the Employee Xaml views 
+    /// Performing The CRUD operation is functional Using EF core Framework
     /// </summary>
     public partial class EmployeeView : UserControl
     {
+        // Creating Context For Connection to the Database and Manipulating Data 
         LMDbContext context = new LMDbContext();
-        
+
+        //Constructor of EmpoyeeView Class
         public EmployeeView()
         {
             InitializeComponent();
             EmpDataTable();
-            comboEmpGender.ItemsSource = new string[] { "Male", "Female" };
-            EmployeeTable.SelectionChanged+= EmployeeTable_SelectionChanged;
+            EmployeeTable.SelectionChanged += EmployeeTable_SelectionChanged;
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-        }
-
+        //for updating the table when data changes
         public void EmpDataTable()
         {
-            var context = new LMDbContext();
             var Emp = context.Employees.ToList();
             EmployeeTable.ItemsSource = Emp;
-            
+            comboEmpGender.ItemsSource = new string[] { "Male", "Female" };
+
         }
 
+        //Adds Employee data to the Category table
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-           
-
+            // Creating Class object and storing data inside it for Adding
             var Emp = new Employee()
             {
                 EmpName = textEmpName.Text,
@@ -61,28 +62,68 @@ namespace LeaveManagementAPP.View
                 EmpGender = comboEmpGender.SelectedItem.ToString(),
             };
 
-            context.Employees.Add(Emp);
-            context.SaveChanges();
-            EmpDataTable();
+            try
+            {
+                LMDbContext context = new LMDbContext();
+
+                // Updates The database
+                context.Employees.Add(Emp);
+                context.SaveChanges();
+
+                //Show Message if successful Added 
+                MessageBox.Show("Data Added Successfully...");
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                //Clear Fields
+                ClearFields();
+
+                //Update Table When Data Changes
+                EmpDataTable();
+            }
+
+
 
         }
+
+        //Delete Employee data to the Category Table
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            var context = new LMDbContext();
-
             var Emp = new Employee()
             {
                 EmpID = int.Parse(textEmpID.Text),
             };
 
-            context.Employees.Remove(Emp);
-            context.SaveChanges();
-            EmpDataTable();
+            try
+            {
+                LMDbContext context = new LMDbContext();
+
+                context.Employees.Remove(Emp);
+                context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally 
+            {
+                //Clear Fields
+                ClearFields();
+
+                //Update Table When Data Changes
+                EmpDataTable();
+            }
         }
+
+        //Updates Employee data to the Category table
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-            var context = new LMDbContext();
-
+            // Creating Class object and storing data inside it for Update 
             var Emp = new Employee()
             {
                 EmpID = int.Parse(textEmpID.Text),
@@ -93,11 +134,29 @@ namespace LeaveManagementAPP.View
                 EmpGender = comboEmpGender.SelectedItem.ToString(),
             };
 
-            context.Employees.Update(Emp);
-            context.SaveChanges();
-            EmpDataTable();
+            try
+            {
+                LMDbContext context = new LMDbContext();
+
+                //context.Entry().State = EntityState.Detached;
+                context.Employees.Update(Emp);
+                context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally 
+            {
+                //Clear Fields
+                ClearFields();
+
+                //Update Table When Data Changes
+                EmpDataTable();
+            }  
         }
 
+        //For populating TextBox When Selection Changes
         private void EmployeeTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var activelist = (Employee)EmployeeTable.CurrentItem;
@@ -109,9 +168,18 @@ namespace LeaveManagementAPP.View
                 textEmpAddress.Text = activelist.EmpAddress;
                 textEmpEmail.Text = activelist.EmpEmail;
                 textEmpPassword.Text = activelist.EmpPassword;
-                comboEmpGender.SelectedItem= activelist.EmpGender;
-                
+                comboEmpGender.SelectedItem = activelist.EmpGender;
+
             }
+        }
+        private void ClearFields()
+        {
+            textEmpID.Clear();
+            textEmpName.Clear();
+            textEmpAddress.Clear();
+            textEmpEmail.Clear();
+            textEmpPassword.Clear();
+            //comboEmpGender.Items.Clear();
         }
     }
 }

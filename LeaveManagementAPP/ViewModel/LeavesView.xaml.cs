@@ -16,6 +16,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.TextFormatting;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
@@ -31,16 +32,11 @@ namespace LeaveManagementAPP.View
         {
             InitializeComponent();
             LeaveDataTable();
-
-            comboStatus.ItemsSource = new string[] { "Approved", "Pending", "Denied" };
-
             LeaveTable.SelectionChanged += LeaveTable_SelectionChanged;
-            comboCategory.ItemsSource = context.Categories.Select(e => e.CategoryName).ToArray();
-            
         }
 
 
-
+        //Updates Employee data to the Category 
         private void Update_Click(object sender, RoutedEventArgs e)
         {
 
@@ -52,18 +48,48 @@ namespace LeaveManagementAPP.View
                 StartDate = DateStart.SelectedDate,
                 EndDate = DateEnd.SelectedDate,
                 Status = comboStatus.Text,
-                LeaveCategory = comboCategory.Text,
+                LeaveCategory = comboCategory.SelectedItem.ToString()
             };
 
-            context.Leaves.Update(leave);
-            context.SaveChanges();
+            try
+            {
+                LMDbContext context = new LMDbContext();
+
+                context.Leaves.Update(leave);
+                context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                //Clear Fields
+                ClearFields();
+
+                //Update Table When Data Changes
+                LeaveDataTable();
+            }
         }
 
+        private void Delete_Click(object sender, RoutedEventArgs e) 
+        {
+            var leave = new Leave()
+            {
+                LID = int.Parse(textLID.Text),
+            };
+            LMDbContext context = new LMDbContext();
+
+            context.Leaves.Remove(leave);
+            context.SaveChanges();
+        }
         public void LeaveDataTable()
         {
             var context = new LMDbContext();
             var leaves = context.Leaves.ToList();
             LeaveTable.ItemsSource = leaves;
+            comboStatus.ItemsSource = new string[] { "Approved", "Pending", "Denied" };
+            comboCategory.ItemsSource = context.Categories.Select(e => e.CategoryName).ToArray();
         }
 
         private void LeaveTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -89,6 +115,18 @@ namespace LeaveManagementAPP.View
                 
 
             }
+        }
+
+        private void ClearFields()
+        {
+            textEmpName.Clear();
+            textLID.Clear();
+            textEmpID.Clear();
+            //DateStart;
+            //DateEnd.Clear();
+            //comboStatus.Clear();
+            //comboCategory.Clear();
+
         }
     }
 }

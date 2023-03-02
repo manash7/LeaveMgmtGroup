@@ -15,7 +15,6 @@ namespace LeaveManagementAPP.Model
         [Key]
         public int CatID { get; set; }
 
-
         public string? CategoryName { get; set; }
 
         public int CategoryLeaveCount { get; set; }

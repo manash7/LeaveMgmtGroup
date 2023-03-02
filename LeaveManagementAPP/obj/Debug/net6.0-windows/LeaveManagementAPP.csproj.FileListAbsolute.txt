@@ -78,3 +78,11 @@ C:\Users\Techment Technology\source\repos\New folder\LeaveManagementAPP\LeaveMan
 C:\Users\Techment Technology\source\repos\New folder\LeaveManagementAPP\LeaveManagementAPP\obj\Debug\net6.0-windows\Leave_DBoard .g.cs
 C:\Users\Techment Technology\source\repos\New folder\LeaveManagementAPP\LeaveManagementAPP\obj\Debug\net6.0-windows\Employe_dashboard.baml
 C:\Users\Techment Technology\source\repos\New folder\LeaveManagementAPP\LeaveManagementAPP\obj\Debug\net6.0-windows\Leave_DBoard .baml
+C:\Users\Techment Technology\source\repos\New folder\LeaveManagementAPP\LeaveManagementAPP\bin\Debug\net6.0-windows\appsetting.json
+C:\Users\Techment Technology\source\repos\New folder\LeaveManagementAPP\LeaveManagementAPP\bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.dll
+C:\Users\Techment Technology\source\repos\New folder\LeaveManagementAPP\LeaveManagementAPP\bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\Techment Technology\source\repos\New folder\LeaveManagementAPP\LeaveManagementAPP\bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\Techment Technology\source\repos\New folder\LeaveManagementAPP\LeaveManagementAPP\bin\Debug\net6.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\Techment Technology\source\repos\New folder\LeaveManagementAPP\LeaveManagementAPP\bin\Debug\net6.0-windows\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\Techment Technology\source\repos\New folder\LeaveManagementAPP\LeaveManagementAPP\bin\Debug\net6.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\Users\Techment Technology\source\repos\New folder\LeaveManagementAPP\LeaveManagementAPP\obj\Debug\net6.0-windows\LeaveManagementAPP_Content.g.cs
